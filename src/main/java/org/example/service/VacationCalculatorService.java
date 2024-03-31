@@ -9,15 +9,15 @@ import java.util.List;
 public class VacationCalculatorService {
 
 
-    // Метод для расчета отпускных с учетом праздников и выходных дней
-    public double calculateVacationCompensationWithHolidays(double averageSalary, int vacationDays, List<LocalDate> vacationDates, List<LocalDate> holidays) {
-        int workDays = calculateWorkDays(vacationDates, holidays);
+    // Метод для расчета отпускных с учетом выходных дней
+    public double calculateVacationCompensationWithHolidays(double averageSalary, int vacationDays, List<LocalDate> vacationDates) {
+        int workDays = calculateWorkDays(vacationDates);
         return averageSalary / workDays * vacationDays;
     }
 
     // Вспомогательный метод для расчета рабочих дней
-    private int calculateWorkDays(List<LocalDate> vacationDates, List<LocalDate> holidays) {
-        int workDays = 365 - holidays.size();
+    private int calculateWorkDays(List<LocalDate> vacationDates) {
+        int workDays = 365;
 
         workDays -= vacationDates.size();
 

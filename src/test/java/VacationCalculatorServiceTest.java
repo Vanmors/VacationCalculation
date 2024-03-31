@@ -17,10 +17,9 @@ class VacationCalculatorServiceTest {
         double averageSalary = 50000;
         int vacationDays = 20;
         List<LocalDate> vacationDates = Arrays.asList(LocalDate.of(2023, 7, 1), LocalDate.of(2023, 7, 2));
-        List<LocalDate> holidays = Arrays.asList(LocalDate.of(2023, 7, 4), LocalDate.of(2023, 7, 5));
 
-        // Расчет количества рабочих дней с учетом праздников и выходных
-        int workDays = 365 - holidays.size() - vacationDates.size();
+        // Расчет количества рабочих дней с учетом выходных
+        int workDays = 365 - vacationDates.size();
         for (LocalDate date : vacationDates) {
             if (date.getDayOfWeek().getValue() >= 6) {
                 workDays--;
@@ -28,7 +27,7 @@ class VacationCalculatorServiceTest {
         }
 
         double expectedCompensation = averageSalary / workDays * vacationDays;
-        double actualCompensation = service.calculateVacationCompensationWithHolidays(averageSalary, vacationDays, vacationDates, holidays);
+        double actualCompensation = service.calculateVacationCompensationWithHolidays(averageSalary, vacationDays, vacationDates);
         assertEquals(expectedCompensation, actualCompensation);
     }
 }

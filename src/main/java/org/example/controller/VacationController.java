@@ -20,6 +20,6 @@ public class VacationController {
             @RequestParam int vacationDays,
             @RequestParam List<LocalDate> vacationDates,
             @RequestParam List<LocalDate> holidays) {
-        return vacationCalculatorService.calculateVacationCompensationWithHolidays(averageSalary, vacationDays, vacationDates, holidays);
+        return vacationCalculatorService.calculateVacationCompensationWithHolidays(averageSalary, vacationDays, vacationDates);
     }
 }
